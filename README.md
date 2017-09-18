@@ -4,6 +4,19 @@ stream-handbook
 stream-handbook的完整中文版本
 
 # nodejs stream 手册
+<!-- MDTOC maxdepth:3 firsth1:0 numbering:0 flatten:0 bullets:1 updateOnSave:1 -->
+# 导览
+- [引子](#引子)
+- [为什么应该使用流](#为什么应该使用流)
+- [流模块基础](#流模块基础)
+  - [pipe](#pipe) 
+  - [readable流](#readable流) 
+  - [writable流](#writable流) 
+  - [transform流](#transform流) 
+  - [duplex流](#duplex流) 
+  - [classic流](#classic流) 
+- [接下来读什么](#接下来读什么)
+
 >写在前面的话:
 >如果你正在学习Nodejs，那么流一定是一个你需要掌握的概念。如果你想成为一个Node高手，那么流一定是武功秘籍中不可缺少的一个部分。关于流这个主题，由Node高手substack带来的`stream-handbook`绝对是经典入门读物之一，其在Github上的star数量已经超过了4500个，足以见其权威程度。本文下面的内容将参考自substack的[这篇文章](https://github.com/substack/stream-handbook)。本文也放在Github上，如果你本文觉得对你有帮助，鼓励大家去github上帮我点个赞。[https://github.com/jabez128/stream-handbook](https://github.com/jabez128/stream-handbook)
 
@@ -343,7 +356,7 @@ Readable流可以产出数据，你可以将这些数据传送到一个writable�
 
 为了避免读写速率不匹配而造成内存上涨，可以监听`drain`事件，等待可写流内部缓存被清空再继续写入。
 
-### transform流  
+### transform流
 
 你可以将transform流想象成一个流的中间部分，它可以读也可写，但是并不保存数据，它只负责处理流经它的数据。  
 
